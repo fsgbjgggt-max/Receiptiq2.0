@@ -31,15 +31,19 @@ jobs:
       - name: Flutter Version
         run: flutter --version
 
-      - name: Get Dependencies
-        run: flutter pub get
-
       - name: Accept Android Licenses
         run: yes | flutter doctor --android-licenses
 
-      - name: Build Release APK
-        run: flutter build apk --release
+      - name: Get Dependencies
+  run: |
+    cd flutter-receiptiq
+    flutter pub get
 
+  - name: Build Release APK
+  run: |
+    cd flutter-receipt
+    flutter build apk --release
+    
       - name: Verify APK Exists
         run: ls -la build/app/outputs/flutter-apk/
 
